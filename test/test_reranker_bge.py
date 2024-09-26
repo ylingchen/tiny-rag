@@ -1,4 +1,5 @@
 import sys
+import time
 sys.path.append(".")
 
 from tinyrag import RerankerBGEM3
@@ -23,11 +24,14 @@ def test_bge_reranker():
         "大数据技术用于处理和分析海量的数据集，具有处理速度快、存储容量大等特点。"
     ]
     
-    recall_list = bge_m3.rank(query, txt_list)
+    recall_list = bge_m3.rank(query, txt_list, 5)
 
     for text in recall_list:
         print(text)
 
 
 if __name__ == "__main__":
+    start = time.time()
     test_bge_reranker()
+    end = time.time()
+    print("test_bge_reranker", round(end-start, 5))

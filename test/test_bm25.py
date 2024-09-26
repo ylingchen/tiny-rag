@@ -9,7 +9,6 @@ sys.path.insert(0, myPath + '/../')
 from tinyrag import BM25Okapi, BM25L, BM25Plus
 import re
 
-
 corpus = [
     "Hello there good man!",
     "It is quite windy in London",

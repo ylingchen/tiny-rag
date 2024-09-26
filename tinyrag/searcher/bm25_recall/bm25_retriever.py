@@ -47,7 +47,6 @@ class BM25Retriever:
             "data_list": self.data_list,
             "tokenized_corpus": self.tokenized_corpus
         }
-        
         with open(db_file_path, 'wb') as f:
             pickle.dump(data_to_save, f)
 
@@ -59,7 +58,6 @@ class BM25Retriever:
         
         with open(db_file_path, 'rb') as f:
             data = pickle.load(f)
-        
         self.data_list = data["data_list"]
         self.tokenized_corpus = data["tokenized_corpus"]
         

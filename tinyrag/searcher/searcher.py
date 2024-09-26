@@ -7,6 +7,7 @@ import jieba
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 import numpy as np
+import pandas as pd
 
 from tinyrag.embedding.hf_emb import HFSTEmbedding
 from tinyrag.searcher.bm25_recall.bm25_retriever import BM25Retriever

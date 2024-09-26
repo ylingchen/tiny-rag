@@ -1,4 +1,5 @@
 import sys
+import time
 sys.path.append(".")
 
 from tinyrag import BM25Retriever
@@ -32,10 +33,18 @@ def test_bm25_recall():
     # bm25_retriever.save_bm25_data()
 
     # 或者从保存的文件中加载分词结果
+    start = time.time()
     bm25_retriever.load_bm25_data()
+    end = time.time()
+    print("bm25_retriever.load_bm25_data()", round(end-start, 5))
+    
 
     query = "机器学习是人工智能(AI) 和计算机科学的一个分支,专注于使用数据和算法,模仿人类学习的方式,逐步提高自身的准确性。"
-    top_n_texts = bm25_retriever.search(query, top_n=2)
+    start = time.time()
+    top_n_texts = bm25_retriever.search(query, top_n=5)
+    end = time.time()
+    print("bm25_retriever.search(query, top_n=5)", round(end-start, 5))
+    
 
     # 输出最相似的文本
     for text in top_n_texts:

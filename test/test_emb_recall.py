@@ -1,6 +1,6 @@
 import sys
 sys.path.append(".")
-
+import time
 from tinyrag import EmbRetriever
 from tinyrag import HFSTEmbedding, EmbIndex
 import numpy as np
@@ -20,25 +20,33 @@ def test_emb_recall():
         "大数据技术用于处理和分析海量的数据集，具有处理速度快、存储容量大等特点。"
     ]
 
-    model_id = "models/bge-small-zh-v1.5"
+    model_id = "models/bge-base-zh-v1.5"
     hf_emb = HFSTEmbedding(path=model_id)
 
-    emb_retriever = EmbRetriever(512)
+    emb_retriever = EmbRetriever(768)
 
-    for text in txt_list:
-        text_emb = hf_emb.get_embedding(text)
-        emb_retriever.insert(text_emb, text)
-
+    # for text in txt_list:
+    #     text_emb = hf_emb.get_embedding(text)
+    #     emb_retriever.insert(text_emb, text)
+    start = time.time()
+    emb_retriever.load()
+    end = time.time()
+    print("emb_retriever.load()", round(end-start, 5))
     query = "机器学习是人工智能(AI) 和计算机科学的一个分支,专注于使用数据和算法,模仿人类学习的方式,逐步提高自身的准确性。"
     query_emb = hf_emb.get_embedding(query)
-    recall_list = emb_retriever.search(query_emb, 2)
-
+    start = time.time()
+    recall_list = emb_retriever.search(query_emb, 5)
+    end = time.time()
+    print("emb_retriever.search()", round(end-start, 5))
+    
     for text in recall_list:
         print(text)
 
 
 if __name__ == "__main__":
+    
     test_emb_recall()
+    
 
 
 
