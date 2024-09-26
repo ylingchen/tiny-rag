@@ -45,6 +45,8 @@ class EmbRetriever:
 
     def search(self, embs: list, top_n=5):
         search_res = self.invert_index.search(embs, top_n)
+        print("search_res:", search_res)
+        print("self.forward_index:", self.forward_index[:3])
         recall_list = []
         for idx in range(top_n):
             recall_list.append((search_res[1][0][idx], self.forward_index[search_res[1][0][idx]], search_res[0][0][idx]))

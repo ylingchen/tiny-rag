@@ -1,0 +1,50 @@
+(yangling) root@huaweiyun20220320213:/workspace/yangling6/tiny-rag# python script/tiny_rag.py -t search -c config/qwen2_config.json
+[nltk_data] Downloading package punkt to /root/nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+config:  RAGConfig(base_dir='data/wiki_db', llm_model_id='models/Qwen2-7B-Instruct', emb_model_id='models/bge-base-zh-v1.5', ranker_model_id='models/bge-reranker-base', device='cuda', sent_split_model_id='models/nlp_bert_document-segmentation_chinese-base', sent_split_use_model=False, sentence_size=256, model_type='qwen2')
+未初始化数据库，请加载数据库！ 
+2024-09-23 10:58:24.902 | INFO     | tinyrag.searcher.searcher:__init__:40 - Searcher init build success...
+Loading checkpoint shards: 100%|███████████████████████████████████████| 4/4 [00:08<00:00,  2.24s/it]
+2024-09-23 10:58:34.397 | INFO     | __main__:query_search:35 - tiny rag init success!
+2024-09-23 10:58:40.483 | INFO     | tinyrag.searcher.searcher:load_db:88 - bm25 retriever load success...
+2024-09-23 10:58:41.136 | INFO     | tinyrag.searcher.searcher:load_db:90 - emb retriever load success...
+2024-09-23 10:58:41.136 | INFO     | tinyrag.tiny_rag:load:102 - search load database success!
+Building prefix dict from the default dictionary ...
+Loading model from cache /tmp/jieba.cache
+Loading model cost 0.719 seconds.
+Prefix dict has been built successfully.
+2024-09-23 10:58:42.061 | INFO     | tinyrag.searcher.searcher:search:94 - bm25 recall text num: 12
+2024-09-23 10:58:42.108 | INFO     | tinyrag.searcher.searcher:search:99 - emb recall text num: 12
+2024-09-23 10:58:42.108 | INFO     | tinyrag.searcher.searcher:search:109 - unique recall text num: 24
+2024-09-23 10:58:42.223 | INFO     | tinyrag.tiny_rag:search:120 - prompt: 参考信息：
+好运北京乃是为了迎接北京举办2008年夏季奥林匹克运动会而举办的一系列体育赛事，主要目的是对奥运会比赛场馆设施、技术系统、计划方案、运行规范及保障能力等进行测试和检验，希望从赛事中获得宝贵的经验，从而在举办奥运会时提高各项重要措施的水平。
+除了公路网连接北二环，西二环，学院路，紫竹院路两条快速路以外，附近还有北京北站，北京地铁2、4和13的换乘站西直门站，以前还曾有西直门长途汽车站，主要发往承德、张家口、内蒙古方向，2005年已迁至六里桥长途汽车站。
+北京环球度假区位于北京东六环与京哈高速公路交汇处施园桥的西北方向，北京城市副中心南部的通州文化旅游区，由中美合资的“北京国际度假区有限公司”负责主体投资、运营，其中以北京首旅集团为首的“北京首寰文化旅游投资有限公司”持股70%，美国NBC环球集团全资子公司“环球北京业主控股有限责任公司” 持股30%，投资超过300亿元。
+北京广播电视台（Beijing Radio & Television Station，简写：BRTV）是中华人民共和国北京市一家主要从事广播电视节目制作、播出的特大型市属事业单位，成立于2010年6月1日，由原北京人民广播电台、北京电视台、北广传媒等单位合并组建而成。
+2005年1月13日，北京市民族事务委员会主任张恕贤在视察长辛店天主堂时表示，长辛店天主堂房产落实政策工作是北京市人民政府2005年第52件实事，各部门、各单位要积极配合完成该工作，北京市天主教爱国会也要就教堂归还后的规划问题请专业部门协助。
+国民教育中心采用「多感官体验学习法」来设计教学内容，内设多个主题「课室」，包括介绍国家过去所经历过的战争的「烽火轩」、介绍中药的「百草轩」、介绍国旗与各省份的「龙情轩」、介绍国家历代名人的「点将轩」及介绍中国武术等的「国艺轩」。
+---
+我的问题或指令：
+请介绍一下北京
+---
+我的回答：
+
+---
+请根据上述参考信息回答和我的问题或指令，修正我的回答。前面的参考信息和我的回答可能有用，也可能没用，你需要从我给出的参考信息中选出与我的问题最相关的那些，来为你修正的回答提供依据。回答一定要忠于原文，简洁但不丢信息，不要胡乱编造。我的问题或指令是什么语种，你就用什么语种回复。
+你修正的回答:
+The attention mask is not set and cannot be inferred from input because pad token is same as eos token. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+output:  北京是中国的首都，位于华北地区。它不仅是政治、文化和经济中心，也是历史古都，拥有丰富的文化遗产。北京的主要特色包括：
+
+1. **奥运遗产**：为迎接2008年夏季奥林匹克运动会，北京兴建了一系列体育场馆和基础设施，如国家体育场（鸟巢）、国家游泳中心（水立方）等，这些场馆至今仍被用于各类国际和国内体育赛事。
+
+2. **交通网络**：北京的交通网络非常发达，包括公路、地铁、火车站和长途汽车站。西直门站是一个重要的交通枢纽，连接地铁2号线、4号线和13号线，方便乘客换乘。此外，北京北站也是一个重要的铁路站点。
+
+3. **北京环球度假区**：位于通州文化旅游区，是一个集娱乐、休闲、购物为一体的综合性度假区，由中美合资企业投资建设，旨在吸引国内外游客。
+
+4. **文化与媒体**：北京广播电视台是北京市的主要广播电视机构，成立于2010年，整合了多个媒体资源，提供多样化的视听内容。
+
+5. **宗教与历史建筑**：长辛店天主堂是北京的一个知名宗教场所，其房产政策得到市政府的重视，并被列入为民办实事项目之一。
+
+6. **教育创新**：国民教育中心采用了多感官体验学习法，通过设置不同的主题教室，如烽火轩、百草轩、龙情轩、点将轩和国艺轩等，提供寓教于乐的学习环境。
+
+综上所述，北京是一个多元化的城市，融合了现代都市的活力与深厚的历史文化底蕴，同时也在不断推动科技创新和文化发展。

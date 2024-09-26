@@ -1,0 +1,50 @@
+(yangling) root@huaweiyun20220320213:/workspace/yangling6/tiny-rag# python script/tiny_rag.py -t sear
+ch -c config/qwen2_config.json
+[nltk_data] Downloading package punkt to /root/nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+config:  RAGConfig(base_dir='data/wiki_db', llm_model_id='models/Qwen2-7B-Instruct', emb_model_id='models/bge-base-zh-v1.5', ranker_model_id='models/bge-reranker-base', device='cuda', sent_split_model_id='models/nlp_bert_document-segmentation_chinese-base', sent_split_use_model=False, sentence_size=256, model_type='qwen2')
+未初始化数据库，请加载数据库！ 
+
+2024-09-23 10:47:14.394 | INFO     | tinyrag.searcher.searcher:__init__:40 - Searcher init build success...
+Loading checkpoint shards: 100%|███████████████████████████████████████| 4/4 [00:08<00:00,  2.23s/it]
+2024-09-23 10:47:23.848 | INFO     | __main__:query_search:35 - tiny rag init success!
+2024-09-23 10:47:30.026 | INFO     | tinyrag.searcher.searcher:load_db:88 - bm25 retriever load success...
+2024-09-23 10:47:30.696 | INFO     | tinyrag.searcher.searcher:load_db:90 - emb retriever load success...
+2024-09-23 10:47:30.696 | INFO     | tinyrag.tiny_rag:load:102 - search load database success!
+The attention mask is not set and cannot be inferred from input because pad token is same as eos token. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Building prefix dict from the default dictionary ...
+Loading model from cache /tmp/jieba.cache
+Loading model cost 0.719 seconds.
+Prefix dict has been built successfully.
+2024-09-23 10:47:56.685 | INFO     | tinyrag.searcher.searcher:search:94 - bm25 recall text num: 12
+2024-09-23 10:47:56.739 | INFO     | tinyrag.searcher.searcher:search:99 - emb recall text num: 12
+2024-09-23 10:47:56.739 | INFO     | tinyrag.searcher.searcher:search:109 - unique recall text num: 24
+2024-09-23 10:47:56.991 | INFO     | tinyrag.tiny_rag:search:118 - prompt: 参考信息：
+2000年代，北京市崇文区提出建设“天坛文化圈”，以东北角的北京明城墙遗址公园及北京内城东南角楼，西北角的正阳门箭楼，西南角复建的永定门城楼，东南角计划复建的左安门城楼，形成“天坛居中，几楼环绕”的城市空间格局。
+东北平原地处中国的东北部，位于大兴安岭、小兴安岭和长白山脉之间，介于北纬40°25′～48°40′，东经118°40′～128°，南北长1000多千米，东西宽300～400千米，面积35万平方公里，地跨黑龙江、吉林、辽宁和内蒙古四个省区，是中国面积最大的平原。
+区域中心城市有：重庆、沈阳、大连、长春、哈尔滨、南京、杭州、宁波、厦门、济南、青岛、武汉、深圳、成都、西安、石家庄、太原、呼和浩特、合肥、福州、南昌、郑州、长沙、南宁、海口、贵阳、昆明、兰州、西宁、银川和乌鲁木齐，区域中心城市的培育将促进区域经济社会的发展，缩小地区间发展水平的差距。
+《全国城镇体系规划纲要（2005-2020年）》显示，中华人民共和国的区域中心城市有：重庆、沈阳、大连、长春、哈尔滨、南京、杭州、宁波、厦门、济南、青岛、武汉、深圳、成都、西安、石家庄、太原、呼和浩特、合肥、福州、南昌、郑州、长沙、南宁、海口、贵阳、昆明、兰州、西宁、银川和乌鲁木齐。
+* 国内：深圳、杭州、北京、广州、上海、成都、西安、武汉、合肥、郑州、宁波、温州、南通、无锡、厦门、南昌、乌鲁木齐、兰州、昆明、揭阳、贵阳、济南、南京、重庆、石家庄、长沙、沈阳、哈尔滨、泉州、大连、天津、长春、呼和浩特、潍坊、福州、南宁、青岛、太原等。
+* 发展型都市圈：16个，除首都都市圈包含北京和天津两个中心城市之外，其余都市圈均为单一中心城市，这些中心城市分别为合肥、青岛、成都、西安、郑州、厦门、济南、武汉、石家庄、长春、太原、长沙、贵阳、南宁、沈阳。
+---
+我的问题或指令：
+请介绍一下北京
+---
+我的回答：
+北京，简称“京”，是中华人民共和国的首都，全国的政治中心、文化中心、国际交往中心和科技创新中心。位于中国北方地区，中心位于北纬39°54′至41°00′，东经115°25′至117°10′之间，北依燕山，西靠太行山，与河北、天津两省市为邻；东部及东南部被天津市环绕；西南部与河北省交界；东北部、北部与辽宁省、河北省接壤。
+
+北京是世界上拥有世界文化遗产最多的城市，是一座有着三千多年建城历史、八百六十余年建都史的历史文化名城，拥有众多历史名胜古迹和人文景观，如故宫、长城、颐和园、天坛、圆明园等，是中国四大古都之一，并与西安、洛阳、南京并称为“中国四大古都”。
+
+北京也是中国最大的铁路枢纽之一，拥有北京站、北京南站、北京西站、北京北站、清河站、丰台站、北京朝阳站等主要火车站，连接全国各大城市和世界各地。
+
+北京在政治、经济、文化、科技等方面具有重要的地位和影响力，在国家政治生活中起着至关重要的作用。同时，作为中国的国际交往中心，北京吸引了众多国际组织、外企、留学生和游客，是全球最重要的国际城市之一。
+---
+请根据上述参考信息回答和我的问题或指令，修正我的回答。前面的参考信息和我的回答可能有用，也可能没用，你需要从我给出的参考信息中选出与我的问题最相关的那些，来为你修正的回答提供依据。回答一定要忠于原文，简洁但不丢信息，不要胡乱编造。我的问题或指令是什么语种，你就用什么语种回复。
+你修正的回答:
+output:  北京，简称“京”，是中国的首都，同时也是全国的政治中心、文化中心、国际交往中心和科技创新中心。它位于中国北方，地理坐标大致在北纬39°54′至41°00′，东经115°25′至117°10′之间。北京北部倚靠燕山，西部则紧邻太行山，与河北省相邻；东部及东南部被天津市环绕；西南部与河北省接壤；东北部和北部则与辽宁省、河北省接界。
+
+北京因其丰富的世界文化遗产而闻名，是拥有最多世界遗产的城市之一。这座城市有着超过三千年的建城历史和八百多年的建都史，被誉为“中国四大古都”之一，与其他三个古都——西安、洛阳、南京——齐名。北京的历史名胜古迹众多，包括故宫、长城、颐和园、天坛、圆明园等著名景点。
+
+作为中国的重要交通枢纽，北京拥有多个主要火车站，如北京站、北京南站、北京西站、北京北站、清河站、丰台站和北京朝阳站，这些站点连接了中国各大城市以及世界各地。
+
+在政治、经济、文化、科技等领域，北京扮演着重要角色，并对国家政治生活产生关键影响。此外，北京作为国际交往中心，吸引了众多国际组织、外资企业、留学生和游客，成为全球重要的国际城市之一。

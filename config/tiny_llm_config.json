@@ -1,6 +1,6 @@
 {
     "base_dir": "data/wiki_db",
-    "llm_model_id": "models/tiny_llm_sft_92m",
+    "llm_model_id": "models/Qwen2-7B-Instruct",
     "emb_model_id": "models/bge-small-zh-v1.5",
     "ranker_model_id": "models/bge-reranker-base",
     "device": "cpu",

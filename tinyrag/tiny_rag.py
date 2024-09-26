@@ -29,14 +29,14 @@ RAG_PROMPT_TEMPALTE="""参考信息：
 @dataclass
 class RAGConfig:
     base_dir:str = "data/wiki_db"
-    llm_model_id:str = "models/tiny_llm_sft_92m"
-    emb_model_id: str = "models/bge-small-zh-v1.5"
+    llm_model_id:str = "models/Qwen2-7B-Instruct"
+    emb_model_id: str = "models/bge-base-zh-v1.5"
     ranker_model_id:str = "models/bge-reranker-base"
-    device:str = "cpu"
+    device:str = "gpu"
     sent_split_model_id:str = "models/nlp_bert_document-segmentation_chinese-base"
     sent_split_use_model:bool = False
     sentence_size:int = 256
-    model_type: str = "tinyllm"
+    model_type: str = "qwen2"
 
 def process_docs_text(docs_text, sent_split_model):
     sent_res = sent_split_model.split_text(docs_text)
@@ -72,7 +72,8 @@ class TinyRAG:
         self.sent_split_model = SentenceSplitter(
             use_model=False, 
             sentence_size=self.config.sentence_size, 
-            model_path=self.config.sent_split_model_id
+            model_path=self.config.sent_split_model_id,
+            # device=self.config.device
         )
         logger.info("load sentence splitter model success! ")
         txt_list = []
@@ -102,10 +103,12 @@ class TinyRAG:
 
     def search(self, query: str, top_n:int = 3) -> str:
         # LLM的初次回答
-        llm_result_txt = self.llm.generate(query)
+        # llm_result_txt = self.llm.generate(query)
         # 数据库检索的文本
         ## 拼接 query和LLM初次生成的结果，查找向量数据库
-        search_content_list = self.searcher.search(query=query+llm_result_txt+query, top_n=top_n)
+        # search_content_list = self.searcher.search(query=query+llm_result_txt+query, top_n=top_n)
+        llm_result_txt = ""
+        search_content_list = self.searcher.search(query=query, top_n=top_n)
         content_list = [item[1] for item in search_content_list]
         context = "\n".join(content_list)
         # 构造 prompt
@@ -122,3 +125,6 @@ class TinyRAG:
         
 
 
+# if __name__=="__main__":
+#     config = RAGConfig()
+#     print(config)

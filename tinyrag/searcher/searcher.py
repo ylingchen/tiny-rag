@@ -91,11 +91,13 @@ class Searcher:
 
     def search(self, query:str, top_n=3) -> list:
         bm25_recall_list = self.bm25_retriever.search(query, 2 * top_n)
+        print('bm25_recall_list:', bm25_recall_list)
         logger.info("bm25 recall text num: {}".format(len(bm25_recall_list)))
         # for text in bm25_recall_list:
         #     print(text)
         query_emb = self.emb_model.get_embedding(query)
         emb_recall_list = self.emb_retriever.search(query_emb, 2 * top_n)
+        print('emb_recall_list:', emb_recall_list)
         logger.info("emb recall text num: {}".format(len(emb_recall_list)))
         # for text in emb_recall_list:
         #     print(text)
@@ -109,5 +111,5 @@ class Searcher:
         logger.info("unique recall text num: {}".format(len(recall_unique_text)))
 
         rerank_result = self.ranker.rank(query, list(recall_unique_text), top_n)
-
+        print('rerank_result:', rerank_result)
         return rerank_result
